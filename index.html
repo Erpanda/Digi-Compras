@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/icono.png" type="image/png">
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <title>Tienda - DigiCompras</title>
+</head>
+<body>
+    <header class="header">
+        <div class="menu container">
+            <a href="#" class="logo"><i class='bx bxs-component icono-logo'></i> DigiCompras</a>
+            <input type="checkbox" id="menu"/>
+            <label for="menu">
+                <img src="images/menu.png" class="menu-icono" alt="menu">                
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#testimonios">Testimonios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <div id="usuario-actual">
+                <span>Bienvenido, <b id="nombre-usuario"></b></span>
+            </div>
+            <div>
+                <ul>
+                    <li class="submenu">
+                        <img src="images/car.svg" id="img-carrito" alt="carrito">
+                        <div id="carrito">
+                            <table id="lista-carrito">
+                                <thead>
+                                    <tr>
+                                        <th class="n-1">Imagen</th>
+                                        <th class="n-2">Nombre</th>
+                                        <th class="n-3">Precio</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <div class="accion-carrito">
+                                <a href="#" id="vaciar-carrito" class="vaciar-compras">Vaciar Carrito</a>
+                                <h3 class="total-pagar">Total a pagar: s/0.00</h3>
+                            </div>
+                            <a href="#" id="realizar-compra" class="compra">Realizar compra</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="header-content container">
+            <div class="header-slider">
+                <button class="slider-btn prev">&#10094;</button>
+                <div class="slider-track">
+                    <div class="slider-slide">
+                        <img src="images/tv.png" alt="PC principal" />
+                    </div>
+                    <div class="slider-slide">
+                        <img src="images/batidora.png" alt="Oferta 1" />
+                    </div>
+                    <div class="slider-slide">
+                        <img src="images/tablet.png" alt="Oferta 2" />
+                    </div>
+                </div>
+                <button class="slider-btn next">&#10095;</button>
+            </div>
+            
+            <div class="header-txt">
+                <h1>Ofertas Especiales</h1>
+                <p class="description">En DigiCompras, somos tu destino líder para encontrar los electrodomésticos más innovadores y de alta calidad.
+                Desde televisores de última generación hasta los más eficientes sistemas de cocina,
+                tenemos todo lo que necesitas para equipar tu hogar con la mejor tecnología.
+                ¡Explora nuestras ofertas y transforma tu vida hoy!</p>
+                <a href="#" class="btn-1">informacion</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="ofert container">
+        <h2 class="subtittle">Ofertas por tiempo limitado</h2>
+        <div class="ofert-content">
+            <div class="ofert-1">
+                <div class="ofert-img">
+                    <img src="images/refrigeradora.png" alt="">
+                </div>
+                <div class="ofert-txt">
+                    <h3>Refrigerador Inteligente LG</h3>
+                    <a href="#" class="btn-2">Informaciòn</a>
+                </div>
+            </div>
+
+            <div class="ofert-1">
+                <div class="ofert-img">
+                    <img src="images/tv.png" alt="">
+                </div>
+                <div class="ofert-txt">
+                    <h3>Smart TV Samsung 65" 4K UHD</h3>
+                    <a href="#" class="btn-2">Informaciòn</a>
+                </div>
+            </div>
+
+            <div class="ofert-1">
+                <div class="ofert-img">
+                    <img src="images/lavadora.png" alt="">
+                </div>
+                <div class="ofert-txt">
+                    <h3>Lavadora Carga Frontal Bosch</h3>
+                    <a href="#" class="btn-2">Informaciòn</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="separador"></div>
+
+    <main class="products container" id="productos">
+        <h2>Productos</h2>
+        <div class="product-content">
+            <div class="product">
+                <img src="images/microondas.png" alt="">
+                <div class="product-txt">
+                    <h3>Horno Microondas Panasonic</h3>
+                    <p>Calienta y cocina rápido con múltiples funciones automáticas.</p>
+                    <p class="precio">S/ 399</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="1">Agegar al carrito</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/aspiradora.png" alt="">
+                <div class="product-txt">
+                    <h3>Aspiradora Robot Roomba i7+</h3>
+                    <p>Limpieza inteligente con vaciado automático y mapeo avanzado.</p>
+                    <p class="precio">S/ 1899</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="2">Agegar al carrito</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/cafetera.png" alt="">
+                <div class="product-txt">
+                    <h3>Cafetera Expresso De'Longhi</h3>
+                    <p>Espresso intenso con crema perfecta y función automática.</p>
+                    <p class="precio">S/ 749</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="3">Agegar al carrito</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/licuadora.png" alt="">
+                <div class="product-txt">
+                    <h3>Licuadora de Alta Potencia Oster</h3>
+                    <p>Tritura hielo y mezcla todo con motor de alto rendimiento.</p>
+                    <p class="precio">S/ 429</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="4">Agegar al carrito</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/batidora.png" alt="">
+                <div class="product-txt">
+                    <h3>Batidora de Pedestal KitchenAid</h3>
+                    <p>Poducto de calidad primium con 5 velocidades.</p>
+                    <p class="precio">S/ 1699</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="5">Agegar al carrito</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/laptop.png" alt="">
+                <div class="product-txt">
+                    <h3>Laptop HP Pavilion 15 Core i7</h3>
+                    <p>Ideal para trabajo y entretenimiento con 16GB RAM y 512GB SSD.</p>
+                    <p class="precio">S/ 2999</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="6">Agegar al carrito</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/tablet.png" alt="">
+                <div class="product-txt">
+                    <h3>Tablet Samsung Galaxy Tab S8</h3>
+                    <p>Pantalla AMOLED, S Pen incluido y batería de larga duración.</p>
+                    <p class="precio">S/ 2599</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="6">Agegar al carrito</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/audio.png" alt="">
+                <div class="product-txt">
+                    <h3>Auriculares Bluetooth Sony WH-1000XM5</h3>
+                    <p>Cancelación de ruido líder en la industria y sonido de alta resolución.</p>
+                    <p class="precio">S/ 1399</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="6">Agegar al carrito</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/impresora.png" alt="">
+                <div class="product-txt">
+                    <h3>Impresora Epson EcoTank L3250</h3>
+                    <p>Imprime, copia y escanea con gran economía de tinta.</p>
+                    <p class="precio">S/ 699</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="6">Agegar al carrito</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/reloj-apple.png" alt="">
+                <div class="product-txt">
+                    <h3>Smartwatch Apple Watch Series 9</h3>
+                    <p>Monitoreo de salud avanzado y conectividad total en tu muñeca.</p>
+                    <p class="precio">S/ 2299</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="6">Agegar al carrito</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/pc-gamer.png" alt="">
+                <div class="product-txt">
+                    <h3>PC Gaming Intel i5 RTX 3050</h3>
+                    <p>Rendimiento excepcional para tus juegos y tareas más exigentes.</p>
+                    <p class="precio">S/ 3899</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="6">Agegar al carrito</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/celular.png" alt="">
+                <div class="product-txt">
+                    <h3>Smartphone Xiaomi Redmi Note 13 Pro</h3>
+                    <p>Cámara de 108MP, batería de larga duración y rendimiento fluido.</p>
+                    <p class="precio">S/ 1499</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="6">Agegar al carrito</a>
+                </div>
+            </div>
+        </div>
+        <button class="button-ver-mas">Ver más productos</button>
+    </main>
+
+    <div class="separador"></div>
+
+    <section id="servicios" class="servicios container">
+        <h2>¿Qué te ofrece DigiCompras?</h2>
+        <div class="servicios-grid">
+            <div class="servicio-card">
+                <i class='bx bxs-store'></i>
+                <h3>Venta de Electrónicos</h3>
+                <p>Encuentra laptops, smartphones, audio, gaming y más, siempre con garantía y precios competitivos.</p>
+            </div>
+
+            <div class="servicio-card">
+                <i class='bx bxs-package' ></i>
+                <h3>Envíos Seguros y Rápidos</h3>
+                <p>Recibe tus productos en la puerta de tu casa, con seguimiento en tiempo real y cobertura nacional.</p>
+            </div>
+
+            <div class="servicio-card">
+                <i class='bx bx-support'></i>
+                <h3>Soporte Técnico Especializado</h3>
+                <p>Asesoría personalizada antes y después de tu compra. ¡Nuestro equipo resuelve tus dudas y problemas!</p>
+            </div>
+
+            <div class="servicio-card">
+                <i class='bx bx-happy-beaming'></i>
+                <h3>Garantía Extendida</h3>
+                <p>Todos los productos cuentan con garantía oficial y opción de extensión para tu tranquilidad.</p>
+            </div>
+
+            <div class="servicio-card">
+                <i class='bx bx-vector' ></i>
+                <h3>Configuración Personalizada</h3>
+                <p>¿Nuevo equipo? Te lo dejamos listo para usar: sistema, apps, seguridad y más.</p>
+            </div>
+
+            <div class="servicio-card">
+                <i class='bx bx-badge-check' ></i>
+                <h3>Asesoría Tecnológica</h3>
+                <p>No compres a ciegas: nuestro equipo te guía para que elijas justo lo que necesitas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonios">
+        <div class="testimonials-content container">
+            <h2>Lo que opinan nuestros clientes</h2>
+            <div class="testimonials-group">
+
+                <figure class="testimonio">
+                    <blockquote>
+                        <p>"Encontré todo lo que necesitaba para mi oficina en un solo lugar. ¡Excelente atención y rapidez en la entrega!"</p>
+                    </blockquote>
+                    <figcaption><strong>Juan Pérez</strong>
+                        <br><span>Comprador satisfecho</span></figcaption>
+                    <div class="estrellas">
+                        ★★★★★
+                    </div>
+                </figure>
+
+                <figure class="testimonio">
+                    <blockquote>
+                        <p>"La variedad de productos tecnológicos es impresionante, y el soporte técnico me ayudó enseguida. ¡Sigan así!"</p>
+                    </blockquote>
+                    <figcaption><strong>María García</strong><br>
+                        <span>Cliente frecuente</span></figcaption>
+                    <div class="estrellas">
+                        ★★★★☆
+                    </div>
+                </figure>
+
+                <figure class="testimonio">
+                    <blockquote>
+                        <p>"Muy buena experiencia de compra. El sitio es fácil de navegar y me encantó que ofrecen descuentos para estudiantes."</p>
+                    </blockquote>
+                    <figcaption><strong>Andrés Martínez</strong>
+                        <br><span>Cliente nuevo</span></figcaption>
+                    <div class="estrellas">
+                        ★★★★☆
+                    </div>
+                </figure>
+
+            </div>
+
+            <div class="testimonial-side-content">
+                <div class="imagen-opiniones">
+                    <img src="images/opinion.png" alt="Clientes felices" />
+                </div>
+                <div class="testimonial-form">
+                    <h3>Deja tu comentario</h3>
+                    <form action="#" method="post">
+                        <label for="nombre-cmt">Nombre:</label>
+                        <input type="text" id="nombre-cmt" name="nombre-cmt" required>
+
+                        <label for="comentario">Tu opinión:</label>
+                        <textarea id="comentario" name="comentario" rows="4" required></textarea>
+
+                        <label>Calificación:</label>
+                        <div class="rating">
+                            <input type="radio" id="star5" name="rating" value="5" required><label for="star5">★</label>
+                            <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+                            <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+                            <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+                            <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+                        </div>
+
+                        <button type="submit"><strong>Enviar opinión</strong></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer" id="contacto">
+        <div class="footer-container">
+            <div class="tienda-info info-general">
+                <h2><i class='bx bxs-component'></i> DigiCompras</h2>
+                <p>Soluciones digitales al alcance de un clic. Encuentra tecnología, innovación y servicio en un solo lugar.</p>
+                <div class="redes">
+                    <a href="#" aria-label="Facebook"><i class='bx bxl-facebook'></i></a>
+                    <a href="#" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+            </div>
+            <div class="tienda-info info-contacto">
+                <h2>Información de contacto</h2>
+                <p><strong>Locación:</strong><br>Lima, Perú, DigiCompras</p>
+                <p><strong>Teléfono:</strong><br>+51 980 123 456<br>+51 987 654 321</p>
+            </div>
+            <div class="tienda-info subscribe">
+                <form class="subscribe-form">
+                    <h2>Suscríbete</h2>
+                    <div>
+                        <input type="email" id="correo-interesado" class="input-suscripcion" placeholder="Tu correo..." required>
+                        <button type="submit" id="suscribirse"><strong>Suscribirme</strong></button>
+                    </div>
+                    <label>
+                        <input type="checkbox" name="terminos-sucr" required> He leído y acepto los términos y condiciones.
+                    </label>
+                </form>
+            </div>
+        </div>
+        <p class="parrafo_footer">© 2025 DigiCompras. Todos los derechos reservados – <a href="#" style="color: #eee6d7;"><strong>Política de privacidad</strong></a></p>
+    </footer>
+    
+    <div id="modal-registro" class="modal-registro">
+        <form class="form-registro" autocomplete="off">
+            <h2>Registro de Usuario</h2>
+            <P>Únete a nuestra comunidad y recibe las mejores ofertas y noticias directamente en tu correo.</P>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tus nombres" required>
+            
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos" name="apellidos" placeholder="Tus apellidos" required>
+            
+            <label for="sexo">Sexo:</label>
+            <select id="sexo" name="sexo" required>
+                <option value="">Selecciona</option>
+                <option value="masculino">Masculino</option>
+                <option value="femenino">Femenino</option>
+                <option value="otro">Otro</option>
+            </select>
+            
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" placeholder="ejemplo@gmail.com" required>
+            
+            <label>
+                <input type="checkbox" name="info" required>
+                Deseo recibir información y ofertas.
+            </label>
+            <label>
+                <input type="checkbox" name="terminos" required>
+                Acepto los términos y condiciones.
+            </label>
+            
+            <button type="submit" id="registrarse">Registrarme y Comprar</button>
+            <button type="button" id="cerrar-modal">Cancelar</button>
+        </form>
+    </div>
+
+    <span id="añadido-carrito">
+        Producto añadido al carrito
+    </span>
+
+    <div id="pantalla-carga">
+        <div class="spinner"></div>
+        <div class="texto-carga">Enviando...</div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
